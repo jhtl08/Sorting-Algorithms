@@ -1,9 +1,8 @@
 //algosource.cpp
 //Kyle Coloma, Jason Lorenzo, Paolo Ong
 //ENGG 24-J
-//September 13, 2022
+//September 19, 2022
 
-#include <string>
 #include "algosource.h"
 #include <stdlib.h>
 #include <ctime>
