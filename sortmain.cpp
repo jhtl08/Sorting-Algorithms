@@ -34,6 +34,16 @@ int main()
     cout<<"The array has been verified as not sorted."<<endl;
   }
 
+  cout<<"For Selection Sort: ";
+
+  if (verifySort(selectionsort(unsortedOriginal)))
+  {
+    cout<<"The array has been verified as sorted."<<endl;
+  }
+  else
+  {
+    cout<<"The array has been verified as not sorted."<<endl;
+  }
   //return 0;
 
   

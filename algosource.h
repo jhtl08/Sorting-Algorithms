@@ -17,4 +17,7 @@ int* bubblesort(int * unsortedOriginal);
 
 //initializes Insertion Sort function
 int* insertionsort(int* unsortedOriginal);
+
+//initializes Insertion Sort functon
+int* selectionsort(int* unsortedOriginal);
 #endif

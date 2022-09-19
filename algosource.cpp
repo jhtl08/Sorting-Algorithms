@@ -91,3 +91,25 @@ int* insertionsort(int* unsortedOriginal)
     return toSort;
   }
 }
+
+int* selectionsort(int* unsortedOriginal)
+{
+  int* unsortedArray = unsortedOriginal;
+  for (int a = 0; a < 1000; a++)
+  {
+    int min = a;
+    for (int b = a + 1; b < 1000; b++)
+    {
+      if(unsortedArray[min] > unsortedArray[b])
+      {
+        min = b;
+      }
+    }
+
+    int temp = unsortedArray[a];
+    unsortedArray[a] = unsortedArray[min];
+    unsortedArray[min] = temp;
+
+  }
+  return unsortedArray;
+}
