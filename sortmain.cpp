@@ -13,6 +13,7 @@ int main()
   //calls the function to generate unsorted array not to be modified
   int* unsortedOriginal= generateArray();
 
+cout<<"For Bubble Sort: ";
 //output of sorted array from bubble sort entered to verify result
   if (verifySort(bubblesort(unsortedOriginal)))
   {
