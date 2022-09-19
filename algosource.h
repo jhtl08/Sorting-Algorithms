@@ -15,4 +15,6 @@ bool verifySort(int * arraySorted);
 //initializes Bubble Sort function
 int* bubblesort(int * unsortedOriginal);
 
+//initializes Insertion Sort function
+int* insertionsort(int* unsortedOriginal);
 #endif

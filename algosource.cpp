@@ -61,3 +61,34 @@ int* bubblesort(int * unsortedOriginal)
   }
   return unsortedCopy;
 }
+
+int* insertionsort(int* unsortedOriginal)
+{
+  int* toSort = unsortedOriginal;
+  int theSwitcheroo;
+  while (true)
+  {
+    for (int i = 0; i < 1000; i++)
+    {
+      if (toSort[i] > toSort[i+1])
+      {
+        theSwitcheroo = toSort[i];
+        toSort[i] = toSort[i+1];
+        toSort[i+1] = theSwitcheroo;
+      }
+    }
+
+    for (int i = 0; i < 1000; i++)
+    {
+        if (toSort[i] > toSort[i + 1])
+        {
+            break;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    return toSort;
+  }
+}

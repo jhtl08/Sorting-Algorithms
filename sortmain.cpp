@@ -13,7 +13,17 @@ int main()
   //calls the function to generate unsorted array not to be modified
   int* unsortedOriginal= generateArray();
 
-cout<<"For Bubble Sort: ";
+  cout << "For Insertion Sort: ";
+  if (verifySort(insertionsort(unsortedOriginal)))
+  {
+      cout << "The array has been verified as sorted." << endl;
+  }
+  else
+  {
+      cout << "The array has been verified as not sorted." << endl;
+  }
+
+  cout<<"For Bubble Sort: ";
 //output of sorted array from bubble sort entered to verify result
   if (verifySort(bubblesort(unsortedOriginal)))
   {
@@ -24,5 +34,9 @@ cout<<"For Bubble Sort: ";
     cout<<"The array has been verified as not sorted."<<endl;
   }
 
-  return 0;
+  //return 0;
+
+  
+  
+  system("pause");
 }
