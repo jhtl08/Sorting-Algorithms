@@ -9,4 +9,10 @@
 //initializes the random array generator function
 int* generateArray();
 
+//initializes verify function
+bool verifySort(int * arraySorted);
+
+//initializes Bubble Sort function
+int* bubblesort(int * unsortedOriginal);
+
 #endif
