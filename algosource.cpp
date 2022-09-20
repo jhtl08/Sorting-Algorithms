@@ -7,18 +7,21 @@
 #include <stdlib.h>
 #include <ctime>
 
+//set number of elements
+int nItems=1000;
+
 //random generator for the array
 int* generateArray()
 {
   //creates an empty array of 1,000 elements
   //makes sure that the unsorted array remains to return
-  static int* unsortedNums = new int[1000];
+  static int* unsortedNums = new int[nItems];
 
   //fills the array with random numbers (up to 1,000)
   srand(time(0));
-  for (int i=0; i<1000; i++)
+  for (int i=0; i<nItems; i++)
   {
-    *(unsortedNums+i)=rand()%1000;
+    *(unsortedNums+i)=rand()%nItems;
   }
 
   return unsortedNums;
@@ -27,7 +30,7 @@ int* generateArray()
 //function to verify if an array is sorted in ascending order
 bool verifySort(int * arraySorted)
 {
-  for (int i=0; i<999; i++)
+  for (int i=0; i<nItems; i++)
   {
     //tests every element if greater than next
     if (arraySorted[i]>arraySorted[i+1])
@@ -42,15 +45,15 @@ bool verifySort(int * arraySorted)
 //Bubble Sort Algorithm/Function
 int* bubblesort(int * unsortedOriginal)
 {
-  int* bubblesorted=new int(1000);
-  for (int i=0; i<1000; i++)
+  int* bubblesorted=new int(nItems);
+  for (int i=0; i<nItems; i++)
   {
     bubblesorted[i]=unsortedOriginal[i];
   }
   int placeholder;
-  for (int i=0; i<1000; i++)
+  for (int i=0; i<nItems; i++)
   {
-    for (int j=0; j<1000-i; j++)
+    for (int j=0; j<nItems-i; j++)
     {
       //tests if previous is greater than next element
       if (bubblesorted[j]>bubblesorted[j+1])
@@ -67,15 +70,15 @@ int* bubblesort(int * unsortedOriginal)
 
 int* insertionsort(int* unsortedOriginal)
 {
-  int* insertionsorted=new int(1000);
-  for (int i=0; i<1000; i++)
+  int* insertionsorted=new int(nItems);
+  for (int i=0; i<nItems; i++)
   {
     insertionsorted[i]=unsortedOriginal[i];
   }
   int temp;
   while (true)
   {
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < nItems; i++)
     {
       if (insertionsorted[i] > insertionsorted[i+1])
       {
@@ -85,7 +88,7 @@ int* insertionsort(int* unsortedOriginal)
       }
     }
 
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < nItems; i++)
     {
         if (insertionsorted[i] > insertionsorted[i + 1])
         {
@@ -102,15 +105,15 @@ int* insertionsort(int* unsortedOriginal)
 
 int* selectionsort(int* unsortedOriginal)
 {
-  int* selectionsorted=new int(1000);
-  for (int i=0; i<1000; i++)
+  int* selectionsorted=new int(nItems);
+  for (int i=0; i<nItems; i++)
   {
     selectionsorted[i]=unsortedOriginal[i];
   }
-  for (int a = 0; a < 1000; a++)
+  for (int a = 0; a < nItems; a++)
   {
     int min = a;
-    for (int b = a + 1; b < 1000; b++)
+    for (int b = a + 1; b < nItems; b++)
     {
       if(selectionsorted[min] > selectionsorted[b])
       {

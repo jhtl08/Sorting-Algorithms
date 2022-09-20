@@ -74,7 +74,7 @@ int main()
   }
 
 //to check manually if it's sorted
-  for (int i=0;i<1000;i++)
+  for (int i=0;i<1000-1;i++)
     {
       cout<<selectionsorted[i]<<" ";
     }
