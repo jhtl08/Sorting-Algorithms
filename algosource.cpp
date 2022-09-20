@@ -27,7 +27,7 @@ int* generateArray()
 //function to verify if an array is sorted in ascending order
 bool verifySort(int * arraySorted)
 {
-  for (int i=0; i<1000; i++)
+  for (int i=0; i<999; i++)
   {
     //tests every element if greater than next
     if (arraySorted[i]>arraySorted[i+1])
@@ -42,44 +42,52 @@ bool verifySort(int * arraySorted)
 //Bubble Sort Algorithm/Function
 int* bubblesort(int * unsortedOriginal)
 {
-  int* unsortedCopy=unsortedOriginal;
+  int* bubblesorted=new int(1000);
+  for (int i=0; i<1000; i++)
+  {
+    bubblesorted[i]=unsortedOriginal[i];
+  }
   int placeholder;
   for (int i=0; i<1000; i++)
   {
     for (int j=0; j<1000-i; j++)
     {
       //tests if previous is greater than next element
-      if (unsortedCopy[j]>unsortedCopy[j+1])
+      if (bubblesorted[j]>bubblesorted[j+1])
       {
         //swaps the elements
-        placeholder=unsortedCopy[j];
-        unsortedCopy[j]=unsortedCopy[j+1];
-        unsortedCopy[j+1]=placeholder;
+        placeholder=bubblesorted[j];
+        bubblesorted[j]=bubblesorted[j+1];
+        bubblesorted[j+1]=placeholder;
       }
     }
   }
-  return unsortedCopy;
+  return bubblesorted;
 }
 
 int* insertionsort(int* unsortedOriginal)
 {
-  int* toSort = unsortedOriginal;
-  int theSwitcheroo;
+  int* insertionsorted=new int(1000);
+  for (int i=0; i<1000; i++)
+  {
+    insertionsorted[i]=unsortedOriginal[i];
+  }
+  int temp;
   while (true)
   {
     for (int i = 0; i < 1000; i++)
     {
-      if (toSort[i] > toSort[i+1])
+      if (insertionsorted[i] > insertionsorted[i+1])
       {
-        theSwitcheroo = toSort[i];
-        toSort[i] = toSort[i+1];
-        toSort[i+1] = theSwitcheroo;
+        temp = insertionsorted[i];
+        insertionsorted[i] = insertionsorted[i+1];
+        insertionsorted[i+1] = temp;
       }
     }
 
     for (int i = 0; i < 1000; i++)
     {
-        if (toSort[i] > toSort[i + 1])
+        if (insertionsorted[i] > insertionsorted[i + 1])
         {
             break;
         }
@@ -88,28 +96,31 @@ int* insertionsort(int* unsortedOriginal)
             continue;
         }
     }
-    return toSort;
+    return insertionsorted;
   }
 }
 
 int* selectionsort(int* unsortedOriginal)
 {
-  int* unsortedArray = unsortedOriginal;
+  int* selectionsorted=new int(1000);
+  for (int i=0; i<1000; i++)
+  {
+    selectionsorted[i]=unsortedOriginal[i];
+  }
   for (int a = 0; a < 1000; a++)
   {
     int min = a;
     for (int b = a + 1; b < 1000; b++)
     {
-      if(unsortedArray[min] > unsortedArray[b])
+      if(selectionsorted[min] > selectionsorted[b])
       {
         min = b;
       }
     }
 
-    int temp = unsortedArray[a];
-    unsortedArray[a] = unsortedArray[min];
-    unsortedArray[min] = temp;
-
+    int temp = selectionsorted[a];
+    selectionsorted[a] = selectionsorted[min];
+    selectionsorted[min] = temp;
   }
-  return unsortedArray;
+  return selectionsorted;
 }
