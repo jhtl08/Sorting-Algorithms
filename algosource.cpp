@@ -1,7 +1,7 @@
 //algosource.cpp
 //Kyle Coloma, Jason Lorenzo, Paolo Ong
 //ENGG 24-J
-//September 19, 2022
+//September 26, 2022
 
 #include "algosource.h"
 #include <stdlib.h>
@@ -50,7 +50,7 @@ int* bubblesort(int * unsortedOriginal)
   {
     bubblesorted[i]=unsortedOriginal[i];
   }
-  int placeholder;
+  int temp;
   for (int i=0; i<nItems; i++)
   {
     for (int j=0; j<nItems-i; j++)
@@ -59,9 +59,9 @@ int* bubblesort(int * unsortedOriginal)
       if (bubblesorted[j]>bubblesorted[j+1])
       {
         //swaps the elements
-        placeholder=bubblesorted[j];
+        temp=bubblesorted[j];
         bubblesorted[j]=bubblesorted[j+1];
-        bubblesorted[j+1]=placeholder;
+        bubblesorted[j+1]=temp;
       }
     }
   }
@@ -75,32 +75,25 @@ int* insertionsort(int* unsortedOriginal)
   {
     insertionsorted[i]=unsortedOriginal[i];
   }
-  int temp;
-  while (true)
-  {
-    for (int i = 0; i < nItems; i++)
-    {
-      if (insertionsorted[i] > insertionsorted[i+1])
-      {
-        temp = insertionsorted[i];
-        insertionsorted[i] = insertionsorted[i+1];
-        insertionsorted[i+1] = temp;
-      }
-    }
 
-    for (int i = 0; i < nItems; i++)
+  int i, temp;
+  for (int j = 1; j <= nItems; j++)
+  {
+    i = 0;
+
+    while (insertionsorted[j]>insertionsorted[i])
     {
-        if (insertionsorted[i] > insertionsorted[i + 1])
-        {
-            break;
-        }
-        else
-        {
-            continue;
-        }
+      i=i+1;
     }
-    return insertionsorted;
+    temp=insertionsorted[j];
+
+    for (int k = 0; k < j-i-1; k++)
+    {
+      insertionsorted[j-k]=insertionsorted[j-k-1];
+    }
+    insertionsorted[i]=temp;
   }
+  return insertionsorted;
 }
 
 int* selectionsort(int* unsortedOriginal)
@@ -110,20 +103,24 @@ int* selectionsort(int* unsortedOriginal)
   {
     selectionsorted[i]=unsortedOriginal[i];
   }
-  for (int a = 0; a < nItems; a++)
+
+  int min, temp;
+  for (int i = 0; i < nItems; i++)
   {
-    int min = a;
-    for (int b = a + 1; b < nItems; b++)
+    min = i;
+    for (int j = i + 1; j <= nItems; j++)
     {
-      if(selectionsorted[min] > selectionsorted[b])
+      if(selectionsorted[j] < selectionsorted[min])
       {
-        min = b;
+        min = j;
       }
     }
-
-    int temp = selectionsorted[a];
-    selectionsorted[a] = selectionsorted[min];
-    selectionsorted[min] = temp;
+    if (i!= min)
+    {
+      temp=selectionsorted[i];
+      selectionsorted[i]=selectionsorted[min];
+      selectionsorted[min]=temp;
+    }
   }
   return selectionsorted;
 }
