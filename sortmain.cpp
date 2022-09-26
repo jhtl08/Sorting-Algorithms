@@ -74,12 +74,12 @@ int main()
   }
 
 //to check manually if it's sorted
-  for (int i=0;i<1000-1;i++)
+  for (int i=0;i<10;i++)
     {
       cout<<selectionsorted[i]<<" ";
     }
     cout<<"\n\n";
 
-  //system("pause");
-  return 0;
+  system("pause");
+  //return 0;
 }

@@ -8,7 +8,7 @@
 #include <ctime>
 
 //set number of elements
-int nItems=1000;
+int nItems=10;
 
 //random generator for the array
 int* generateArray()
@@ -76,7 +76,7 @@ int* insertionsort(int* unsortedOriginal)
     insertionsorted[i]=unsortedOriginal[i];
   }
   int temp;
-  while (true)
+  while (verifySort(insertionsorted) == false)
   {
     for (int i = 0; i < nItems; i++)
     {
@@ -87,20 +87,8 @@ int* insertionsort(int* unsortedOriginal)
         insertionsorted[i+1] = temp;
       }
     }
-
-    for (int i = 0; i < nItems; i++)
-    {
-        if (insertionsorted[i] > insertionsorted[i + 1])
-        {
-            break;
-        }
-        else
-        {
-            continue;
-        }
-    }
-    return insertionsorted;
   }
+  return insertionsorted;
 }
 
 int* selectionsort(int* unsortedOriginal)
