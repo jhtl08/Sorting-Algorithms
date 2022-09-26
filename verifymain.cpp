@@ -26,13 +26,6 @@ int main()
     cout<<"The array has been verified as not sorted."<<endl;
   }
 
-//to check manually if it's sorted
-  for (int i=0;i<10;i++)
-    {
-      cout<<bubblesorted[i]<<" ";
-    }
-  cout<<"\n\n";  
-
 
   int*insertionsorted=insertionsort(unsortedOriginal);
   cout << "For Insertion Sort: ";
@@ -45,13 +38,6 @@ int main()
   {
       cout << "The array has been verified as not sorted." << endl;
   }
-
-//to check manually if it's sorted
-  for (int i=0;i<10;i++)
-    {
-      cout<<insertionsorted[i]<<" ";
-    }
-    cout<<"\n\n";
 
 
   cout<<"For Selection Sort: ";
@@ -66,13 +52,6 @@ int main()
   {
     cout<<"The array has been verified as not sorted."<<endl;
   }
-
-//to check manually if it's sorted
-  for (int i=0;i<10;i++)
-    {
-      cout<<selectionsorted[i]<<" ";
-    }
-    cout<<"\n\n";
 
   //system("pause");
   return 0;

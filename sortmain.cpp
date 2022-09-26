@@ -29,16 +29,12 @@ int main()
     end = std::chrono::system_clock::now() + duration;
   
     //run bubble sort while it's not yet time point end
-    cout<<"Test";
-    while(true)
+    cout<<"Test"<<endl;
+    while(std::chrono::system_clock::now() < end)
     {
-      cout<<"test 1";
+      cout<<"test 1\n";
       bubblesort(unsortedOriginal);
       counter++;
-      if (std::chrono::system_clock::now() > end)
-      {
-        break;
-      }
     }
     cout<<"done";
     bsortCounts[run_count]=counter;
