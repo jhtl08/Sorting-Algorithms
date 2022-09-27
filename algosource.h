@@ -7,18 +7,21 @@
 #define CODE_ALGOHEADER_H
 
 //initializes the random array generator function
-int* generateArray();
+int* generateArray(int nItems);
 
 //initializes verify function
-bool verifySort(int * arraySorted);
+bool verifySort(int * sorted, int nItems);
+
+//initializes a function to copy unsorted to sorted
+void unsortedCopy(int * unsorted, int * sorted, int nItems);
 
 //initializes Bubble Sort function
-int* bubblesort(int * unsortedOriginal);
+void bubblesort(int * unsorted, int * sorted, int nItems);
 
 //initializes Insertion Sort function
-int* insertionsort(int* unsortedOriginal);
+void insertionsort(int* unsorted, int * sorted, int nItems);
 
 //initializes Insertion Sort functon
-int* selectionsort(int* unsortedOriginal);
+void selectionsort(int* unsorted, int * sorted, int nItems);
 
 #endif

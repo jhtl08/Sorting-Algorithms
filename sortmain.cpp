@@ -12,37 +12,85 @@ using namespace std;
 
 int main()
 {
+  //set number of items
+  int nItems = 1000;
+
   //calls the function to generate unsorted array not to be modified
-  int* unsortedOriginal= generateArray();
+  int* unsorted= generateArray(nItems);
 
-  int counter=0;
-  int run_count=3;
+  //initialize array to contain sorted output
+  int* sorted= new int(nItems);
 
-  int *bsortCounts, *isortCounts, *ssortCounts=new int(10);
+  int sort_count=0;
+  int run_count=10;
+
+  int *bsortCounts = new int(10);
+  int *isortCounts = new int(10);
+  int *ssortCounts = new int(10);
+
+  //initializes a time point in which an algorithm should stop
+  std::chrono::time_point<std::chrono::high_resolution_clock> end;
+  //should stop after 5 seconds
+  std::chrono::seconds duration(5);
 
   for(int i=0; i<run_count;i++)
   {
-    //initializes a time point in which an algorithm should stop
-    std::chrono::time_point<std::chrono::system_clock> end;
-    //should stop after 5 seconds
-    std::chrono::seconds duration(5);
-    end = std::chrono::system_clock::now() + duration;
+    end = std::chrono::high_resolution_clock::now() + duration;
   
     //run bubble sort while it's not yet time point end
-    cout<<"Test"<<endl;
-    while(std::chrono::system_clock::now() < end)
+    while(std::chrono::high_resolution_clock::now() < end)
     {
-      cout<<"test 1\n";
-      bubblesort(unsortedOriginal);
-      counter++;
+      bubblesort(unsorted, sorted, nItems);
+      sort_count++;
     }
-    cout<<"done";
-    bsortCounts[run_count]=counter;
+    bsortCounts[i]=sort_count;
+    sort_count=0;
+
+    //reset end time point
+    end = std::chrono::high_resolution_clock::now() + duration;
+
+    //run insertion sort while it's not yet time point end
+    while(std::chrono::high_resolution_clock::now() < end)
+    {
+      insertionsort(unsorted, sorted, nItems);
+      sort_count++;
+    }
+    isortCounts[i]=sort_count;
+    sort_count=0;
+
+    //reset end time point
+    end = std::chrono::high_resolution_clock::now() + duration;
+
+    //run insertion sort while it's not yet time point end
+    while(std::chrono::high_resolution_clock::now() < end)
+    {
+      selectionsort(unsorted, sorted, nItems);
+      sort_count++;
+    }
+    ssortCounts[i]=sort_count;
+    sort_count=0;
   }
 
+  cout<<"Sort count for Bubble Sort: ";
   for(int i=0; i<run_count;i++)
   {
     cout<<bsortCounts[i]<<" ";
   }
-  return 0;
+  cout<<"\n";
+
+  cout<<"Sort count for Insertion Sort: ";
+  for(int i=0; i<run_count;i++)
+  {
+    cout<<isortCounts[i]<<" ";
+  }
+  cout<<"\n";
+
+  cout<<"Sort count for Selection Sort: ";
+  for(int i=0; i<run_count;i++)
+  {
+    cout<<ssortCounts[i]<<" ";
+  }
+  cout<<"\n";
+
+  system("pause");
 }

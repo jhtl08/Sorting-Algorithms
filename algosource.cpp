@@ -6,12 +6,12 @@
 #include "algosource.h"
 #include <stdlib.h>
 #include <ctime>
+#include <iostream>
 
 //set number of elements
-int nItems=1000;
 
 //random generator for the array
-int* generateArray()
+int* generateArray(int nItems)
 {
   //creates an empty array of 1,000 elements
   //makes sure that the unsorted array remains to return
@@ -28,12 +28,12 @@ int* generateArray()
 }
 
 //function to verify if an array is sorted in ascending order
-bool verifySort(int * arraySorted)
+bool verifySort(int * sorted, int nItems)
 {
   for (int i=0; i<nItems; i++)
   {
     //tests every element if greater than next
-    if (arraySorted[i]>arraySorted[i+1])
+    if (sorted[i]>sorted[i+1])
     {
       return false;
     }
@@ -42,67 +42,65 @@ bool verifySort(int * arraySorted)
   return true;
 }
 
-//Bubble Sort Algorithm/Function
-int* bubblesort(int * unsortedOriginal)
+void unsortedCopy(int * unsorted, int * sorted, int nItems)
 {
-  int* bubblesorted=new int(nItems);
   for (int i=0; i<nItems; i++)
   {
-    bubblesorted[i]=unsortedOriginal[i];
+    sorted[i]=unsorted[i];
   }
+}
+
+//Bubble Sort Algorithm/Function
+void bubblesort(int * unsorted, int * sorted, int nItems)
+{
+  //copies unsorted to sorted
+  unsortedCopy(unsorted, sorted, nItems);
+
   int temp;
   for (int i=0; i<nItems; i++)
   {
     for (int j=0; j<nItems-i; j++)
     {
       //tests if previous is greater than next element
-      if (bubblesorted[j]>bubblesorted[j+1])
+      if (sorted[j]>sorted[j+1])
       {
         //swaps the elements
-        temp=bubblesorted[j];
-        bubblesorted[j]=bubblesorted[j+1];
-        bubblesorted[j+1]=temp;
+        temp=sorted[j];
+        sorted[j]=sorted[j+1];
+        sorted[j+1]=temp;
       }
     }
   }
-  return bubblesorted;
 }
 
-int* insertionsort(int* unsortedOriginal)
+void insertionsort(int* unsorted, int * sorted, int nItems)
 {
-  int* insertionsorted=new int(nItems);
-  for (int i=0; i<nItems; i++)
-  {
-    insertionsorted[i]=unsortedOriginal[i];
-  }
+  //copies unsorted to sorted
+  unsortedCopy(unsorted, sorted, nItems);
 
   int i, temp;
   for (int j = 1; j <= nItems; j++)
   {
     i = 0;
 
-    while (insertionsorted[j]>insertionsorted[i])
+    while (sorted[j]>sorted[i])
     {
       i=i+1;
     }
-    temp=insertionsorted[j];
+    temp=sorted[j];
 
     for (int k = 0; k < j-i-1; k++)
     {
-      insertionsorted[j-k]=insertionsorted[j-k-1];
+      sorted[j-k]=sorted[j-k-1];
     }
-    insertionsorted[i]=temp;
+    sorted[i]=temp;
   }
-  return insertionsorted;
 }
 
-int* selectionsort(int* unsortedOriginal)
+void selectionsort(int* unsorted, int * sorted, int nItems)
 {
-  int* selectionsorted=new int(nItems);
-  for (int i=0; i<nItems; i++)
-  {
-    selectionsorted[i]=unsortedOriginal[i];
-  }
+  //copies unsorted to sorted
+  unsortedCopy(unsorted, sorted, nItems);
 
   int min, temp;
   for (int i = 0; i < nItems; i++)
@@ -110,17 +108,16 @@ int* selectionsort(int* unsortedOriginal)
     min = i;
     for (int j = i + 1; j <= nItems; j++)
     {
-      if(selectionsorted[j] < selectionsorted[min])
+      if(sorted[j] < sorted[min])
       {
         min = j;
       }
     }
     if (i!= min)
     {
-      temp=selectionsorted[i];
-      selectionsorted[i]=selectionsorted[min];
-      selectionsorted[min]=temp;
+      temp=sorted[i];
+      sorted[i]=sorted[min];
+      sorted[min]=temp;
     }
   }
-  return selectionsorted;
 }
