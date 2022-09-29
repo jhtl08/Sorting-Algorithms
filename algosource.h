@@ -1,8 +1,9 @@
 //algosource.h
 //Kyle Coloma, Jason Lorenzo, Paolo Ong
 //ENGG 24-J
-//September 26, 2022
-
+//Project 1 Sorting Algorithms
+//September 30, 2022
+ 
 #ifndef CODE_ALGOHEADER_H
 #define CODE_ALGOHEADER_H
 

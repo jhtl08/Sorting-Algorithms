@@ -1,7 +1,8 @@
 //algosource.cpp
 //Kyle Coloma, Jason Lorenzo, Paolo Ong
 //ENGG 24-J
-//September 26, 2022
+//Project 1 Sorting Algorithms
+//September 30, 2022
 
 #include "algosource.h"
 #include <stdlib.h>
@@ -15,7 +16,7 @@ int* generateArray(int nItems)
 {
   //creates an empty array of 1,000 elements
   //makes sure that the unsorted array remains to return
-  static int* unsortedNums = new int[nItems];
+  static int* unsortedNums = new int[nItems]();
 
   //fills the array with random numbers (up to 1,000)
   srand(time(0));
@@ -33,7 +34,7 @@ bool verifySort(int * sorted, int nItems)
   for (int i=0; i<nItems; i++)
   {
     //tests every element if greater than next
-    if (sorted[i]>sorted[i+1])
+    if (*(sorted + i)>*(sorted+(i+1)))
     {
       return false;
     }
@@ -46,7 +47,7 @@ void unsortedCopy(int * unsorted, int * sorted, int nItems)
 {
   for (int i=0; i<nItems; i++)
   {
-    sorted[i]=unsorted[i];
+    *(sorted+i) = *(unsorted+i);
   }
 }
 
@@ -62,12 +63,12 @@ void bubblesort(int * unsorted, int * sorted, int nItems)
     for (int j=0; j<nItems-i; j++)
     {
       //tests if previous is greater than next element
-      if (sorted[j]>sorted[j+1])
+      if (*(sorted + j) > *(sorted + j + 1))
       {
         //swaps the elements
-        temp=sorted[j];
-        sorted[j]=sorted[j+1];
-        sorted[j+1]=temp;
+        temp= *(sorted + j);
+        *(sorted + j) = *(sorted + j + 1);
+        *(sorted + j + 1) =temp;
       }
     }
   }
@@ -79,21 +80,20 @@ void insertionsort(int* unsorted, int * sorted, int nItems)
   unsortedCopy(unsorted, sorted, nItems);
 
   int i, temp;
-  for (int j = 1; j <= nItems; j++)
+  for (int j = 1; j < nItems; j++)
   {
     i = 0;
 
-    while (sorted[j]>sorted[i])
+    while (*(sorted+j)>*(sorted+i))
     {
       i=i+1;
     }
-    temp=sorted[j];
-
+    temp= *(sorted + j);
     for (int k = 0; k < j-i-1; k++)
     {
-      sorted[j-k]=sorted[j-k-1];
+      *(sorted + j-k) = *(sorted + j-k-1);
     }
-    sorted[i]=temp;
+    *(sorted + i) =temp;
   }
 }
 
@@ -103,21 +103,22 @@ void selectionsort(int* unsorted, int * sorted, int nItems)
   unsortedCopy(unsorted, sorted, nItems);
 
   int min, temp;
-  for (int i = 0; i < nItems; i++)
+  for (int i = 0; i < nItems-1; i++)
   {
     min = i;
-    for (int j = i + 1; j <= nItems; j++)
+    for (int j = i + 1; j < nItems; j++)
     {
-      if(sorted[j] < sorted[min])
+      //finding the least element in the list
+      if(*(sorted+j) < *(sorted+min))
       {
         min = j;
       }
     }
     if (i!= min)
     {
-      temp=sorted[i];
-      sorted[i]=sorted[min];
-      sorted[min]=temp;
+      temp=*(sorted+i);
+      *(sorted+i) = *(sorted+min);
+      *(sorted + min) =temp;
     }
   }
 }

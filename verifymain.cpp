@@ -1,7 +1,8 @@
 //verifymain.cpp
 //Kyle Coloma, Jason Lorenzo, Paolo Ong
 //ENGG 24-J
-//September 26, 2022
+//Project 1 Sorting Algorithms
+//September 30, 2022
 
 #include <iostream>
 #include "algosource.h"
@@ -21,7 +22,6 @@ int main()
 
 
   cout<<"For Bubble Sort: ";
-
   //copies "unsorted" to "sorted" then bubble sorts "sorted"
   bubblesort(unsorted, sorted, nItems);
   //checks sorted
